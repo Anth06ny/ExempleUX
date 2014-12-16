@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.exempleux.R;
@@ -18,9 +19,13 @@ public class EleveAdapter extends BaseAdapter {
     private final LayoutInflater mInflater;
     private final List<Eleve> eleveBeanList;
 
+    private int arrowColor;
+
     public EleveAdapter(final Context context, final List<Eleve> eleveBeanList) {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.eleveBeanList = eleveBeanList;
+
+        arrowColor = context.getResources().getColor(R.color.vivid_blue);
     }
 
     @Override
@@ -54,6 +59,9 @@ public class EleveAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
             viewHolder.ec_tv_nom = (TextView) rowView.findViewById(R.id.ec_tv_nom);
             viewHolder.ec_tv_prenom = (TextView) rowView.findViewById(R.id.ec_tv_prenom);
+            viewHolder.ec_iv_arrow = (ImageView) rowView.findViewById(R.id.ec_iv_arrow);
+
+            viewHolder.ec_iv_arrow.setColorFilter(arrowColor);
 
             rowView.setTag(viewHolder);
         }
@@ -81,6 +89,7 @@ public class EleveAdapter extends BaseAdapter {
     public static class ViewHolder {
         public TextView ec_tv_nom, ec_tv_prenom;
         public Eleve eleveBean;
+        public ImageView ec_iv_arrow;
     }
 
 }

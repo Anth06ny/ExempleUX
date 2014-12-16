@@ -9,17 +9,17 @@
         android:id="@+id/ll_title"
         android:layout_width="fill_parent"
         android:layout_height="@dimen/menu_height"
-        android:orientation="horizontal"
-        android:background="@color/pure_cyan">
+        android:background="@color/strong_blue"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/iv_menu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_menu"
+            android:adjustViewBounds="true"
             android:padding="@dimen/margin_15"
-            android:adjustViewBounds="true"/>
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_menu"/>
 
         <TextView
             android:id="@+id/tv_title"
@@ -28,75 +28,77 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="Relations Amoureuses"
+            android:textColor="@color/white"
             android:textSize="@dimen/font_20"
-            android:visibility="visible"
-            android:textColor="@color/white"/>
+            android:visibility="visible"/>
 
         <ImageView
             android:id="@+id/iv_open"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_open_menu"
             android:adjustViewBounds="true"
             android:padding="@dimen/margin_20"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_open_menu"
             android:visibility="invisible"/>
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll_extension"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="@dimen/margin_10"
-        android:id="@+id/ll_extension">
+        android:paddingTop="@dimen/margin_10">
 
         <Switch
+            android:id="@+id/sw_region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Importantes"
-            android:id="@+id/sw_region"/>
+            android:checked="false"
+            android:text="Importantes"/>
 
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/margin_10">
+            android:layout_marginTop="@dimen/margin_10"
+            android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rb_0"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Ross"
-                android:id="@+id/rb_1"
                 android:layout_weight="1"
-                android:checked="true"/>
+                android:checked="true"
+                android:text="Ross"/>
 
             <RadioButton
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Ted"
                 android:id="@+id/rb_2"
-                android:layout_weight="1"/>
-
-            <RadioButton
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Leonard"
+                android:layout_weight="1"
+                android:text="Ted"/>
+
+            <RadioButton
                 android:id="@+id/rb_3"
-                android:layout_weight="1"/>
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Leonard"/>
         </RadioGroup>
 
         <Button
+            android:id="@+id/bt_valider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Valider"
-            android:id="@+id/bt_valider"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
+            android:text="Valider"
+            android:textColor="@drawable/blue_text_second_selected"/>
     </LinearLayout>
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_15"/>
 </LinearLayout>
