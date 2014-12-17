@@ -3,7 +3,8 @@
               android:layout_width="match_parent"
               android:layout_height="@dimen/menu_height"
               android:orientation="horizontal"
-              android:padding="@dimen/margin_15">
+              android:padding="@dimen/margin_15"
+              android:background="@color/white">
 
 
     <TextView

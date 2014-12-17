@@ -1,9 +1,9 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/very_light_gray"
+                tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/ll_title"
@@ -17,7 +17,10 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:padding="@dimen/margin_15"
+            android:paddingBottom="@dimen/margin_17"
+            android:paddingLeft="@dimen/margin_15"
+            android:paddingRight="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_17"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_menu"/>
 
@@ -26,40 +29,110 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
+            android:gravity="center_vertical"
             android:text="Relations Amoureuses"
             android:textColor="@color/white"
             android:textSize="@dimen/font_20"
             android:visibility="visible"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_extension_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@+id/ll_title"
+        android:background="@color/pure_cyan"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/margin_10">
+
+        <TextView
+            android:id="@+id/tv_resume"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="New Text"
+            android:textColor="@color/white"/>
 
         <ImageView
             android:id="@+id/iv_open"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:padding="@dimen/margin_20"
+            android:paddingBottom="@dimen/margin_13"
+            android:paddingLeft="@dimen/margin_10"
+            android:paddingRight="@dimen/margin_15"
+            android:paddingTop="@dimen/margin_13"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_open_menu"
-            android:visibility="invisible"/>
+            android:visibility="visible"
+            />
+
     </LinearLayout>
 
-    <LinearLayout
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_extension_title"
+        android:layout_marginLeft="@dimen/margin_10"
+        android:layout_marginRight="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_10"
+        >
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/lv"
+            android:layout_alignLeft="@+id/lv"
+            android:layout_alignRight="@+id/lv"
+            android:layout_alignTop="@+id/lv"
+            android:layout_marginTop="@dimen/margin_10"
+            android:background="@drawable/background_shadow">
+        </View>
+
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:divider="@color/very_light_gray"
+            android:dividerHeight="1dp"
+            android:paddingBottom="@dimen/margin_2"
+            android:paddingLeft="@dimen/margin_2"
+            android:paddingRight="@dimen/margin_2"
+            />
+
+
+    </RelativeLayout>
+
+    <com.exempleux.composant.LinearLayoutApparitionAnimation
         android:id="@+id/ll_extension"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_extension_title"
+        android:background="@color/dark_cyan"
         android:orientation="vertical"
-        android:paddingTop="@dimen/margin_10">
+        android:paddingTop="@dimen/margin_10"
+        android:visibility="visible">
 
         <Switch
             android:id="@+id/sw_region"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
             android:checked="false"
-            android:text="Importantes"/>
+            android:focusableInTouchMode="false"
+            android:text="Importantes"
+            android:textColor="@color/white"/>
 
         <RadioGroup
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
             android:layout_marginTop="@dimen/margin_10"
             android:orientation="horizontal">
 
@@ -69,36 +142,44 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:checked="true"
-                android:text="Ross"/>
+                android:text="Ross"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/rb_2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Ted"/>
+                android:text="Ted"
+                android:textColor="@color/white"/>
 
             <RadioButton
                 android:id="@+id/rb_3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Leonard"/>
+                android:text="Leonard"
+                android:textColor="@color/white"/>
         </RadioGroup>
 
         <Button
             android:id="@+id/bt_valider"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center_horizontal|right"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:layout_marginRight="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
             android:gravity="center"
             android:text="Valider"
             android:textColor="@drawable/blue_text_second_selected"/>
-    </LinearLayout>
 
-    <ListView
-        android:id="@+id/lv"
+    </com.exempleux.composant.LinearLayoutApparitionAnimation>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_15"/>
-</LinearLayout>
+        android:layout_height="@dimen/margin_5"
+        android:layout_below="@+id/ll_extension_title"
+        android:background="@drawable/background_shadow_down_to_up"/>
+
+</RelativeLayout>

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.Switch;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 
 import com.exempleux.adapter.EleveAdapter;
 import com.exempleux.bean.Eleve;
+import com.exempleux.composant.LinearLayoutApparitionAnimation;
 
 import java.util.ArrayList;
 
@@ -20,9 +20,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     //Composants graphiques
     private ImageView iv_menu;
-    private TextView tv_title;
+    private TextView tv_title, tv_resume;
     private ImageView iv_open;
-    private LinearLayout ll_extension;
+    private LinearLayoutApparitionAnimation ll_extension;
     private Switch sw_region;
     private RadioButton rb_1;
     private RadioButton rb_2;
@@ -41,8 +41,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         iv_menu = (ImageView) findViewById(R.id.iv_menu);
         tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_resume = (TextView) findViewById(R.id.tv_resume);
         iv_open = (ImageView) findViewById(R.id.iv_open);
-        ll_extension = (LinearLayout) findViewById(R.id.ll_extension);
+        ll_extension = (LinearLayoutApparitionAnimation) findViewById(R.id.ll_extension);
         sw_region = (Switch) findViewById(R.id.sw_region);
         rb_1 = (RadioButton) findViewById(R.id.rb_0);
         rb_2 = (RadioButton) findViewById(R.id.rb_2);
@@ -53,12 +54,15 @@ public class MainActivity extends Activity implements View.OnClickListener {
         rb_1.setOnClickListener(this);
         rb_2.setOnClickListener(this);
         rb_3.setOnClickListener(this);
+        iv_open.setOnClickListener(this);
         bt_valider.setOnClickListener(this);
 
         eleveList = new ArrayList<Eleve>();
         eleveAdapter = new EleveAdapter(this, eleveList);
         lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(eleveAdapter);
+
+        bt_valider.performClick();
 
     }
 
@@ -81,12 +85,23 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             if (rb_1.isChecked()) {
                 fillList(rb_1.getId());
+                tv_resume.setText(rb_1.getText());
             }
             else if (rb_2.isChecked()) {
                 fillList(rb_2.getId());
+                tv_resume.setText(rb_2.getText());
             }
             else if (rb_3.isChecked()) {
                 fillList(rb_3.getId());
+                tv_resume.setText(rb_3.getText());
+            }
+        }
+        else if (v ==  iv_open){
+            if(ll_extension.getVisibility() !=  View.VISIBLE) {
+                ll_extension.setVisibility(View.VISIBLE);
+            }
+            else {
+                ll_extension.setVisibility(View.GONE);
             }
         }
     }

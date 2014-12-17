@@ -21,14 +21,19 @@
     <dimen name="font_50">50sp</dimen>
 
     <!-- Margin  -->
+    <dimen name="margin_2">2dp</dimen>
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_13">13dp</dimen>
     <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_17">17dp</dimen>
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_25">25dp</dimen>
     <dimen name="margin_30">30dp</dimen>
     <dimen name="margin_50">50dp</dimen>
     <dimen name="margin_80">80dp</dimen>
+
+    <dimen name="standard_height">40dp</dimen>
 
 
     <dimen name="menu_height">60dp</dimen>
