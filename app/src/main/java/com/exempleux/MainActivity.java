@@ -3,6 +3,7 @@ package com.exempleux;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -96,11 +97,13 @@ public class MainActivity extends Activity implements View.OnClickListener {
                 tv_resume.setText(rb_3.getText());
             }
         }
-        else if (v ==  iv_open){
-            if(ll_extension.getVisibility() !=  View.VISIBLE) {
+        else if (v == iv_open) {
+            if (ll_extension.getVisibility() != View.VISIBLE) {
+                iv_open.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_left));
                 ll_extension.setVisibility(View.VISIBLE);
             }
             else {
+                iv_open.startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_right));
                 ll_extension.setVisibility(View.GONE);
             }
         }
@@ -111,6 +114,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         if (id == R.id.rb_0) {
             eleveList.add(new Eleve("Carol", "Willick"));
+
             eleveList.add(new Eleve("Emily", "Waltham"));
             eleveList.add(new Eleve("Elizabeth", "Stevens"));
             eleveList.add(new Eleve("Charlie", "Wheeler"));
