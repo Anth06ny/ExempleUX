@@ -107,79 +107,85 @@
 
     </RelativeLayout>
 
-    <com.exempleux.composant.LinearLayoutApparitionAnimation
-        android:id="@+id/ll_extension"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_extension_title"
-        android:background="@color/dark_cyan"
-        android:orientation="vertical"
-        android:paddingTop="@dimen/margin_10"
-        android:visibility="visible">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_extension_title">
 
-        <Switch
-            android:id="@+id/sw_region"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
-            android:checked="false"
-            android:focusableInTouchMode="false"
-            android:text="Importantes"
-            android:textColor="@color/white"/>
-
-        <RadioGroup
+        <com.exempleux.composant.LinearLayoutApparitionAnimation
+            android:id="@+id/ll_extension"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
-            android:layout_marginTop="@dimen/margin_10"
-            android:orientation="horizontal">
+            android:background="@color/dark_cyan"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/margin_10"
+            android:visibility="visible">
 
-            <RadioButton
-                android:id="@+id/rb_0"
-                android:layout_width="0dp"
+            <Switch
+                android:id="@+id/sw_region"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:checked="true"
-                android:text="Ross"
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:checked="false"
+                android:focusableInTouchMode="false"
+                android:text="Importantes"
                 android:textColor="@color/white"/>
 
-            <RadioButton
-                android:id="@+id/rb_2"
-                android:layout_width="0dp"
+            <RadioGroup
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Ted"
-                android:textColor="@color/white"/>
+                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_10"
+                android:orientation="horizontal">
 
-            <RadioButton
-                android:id="@+id/rb_3"
-                android:layout_width="0dp"
+                <RadioButton
+                    android:id="@+id/rb_0"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="Ross"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/rb_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Ted"
+                    android:textColor="@color/white"/>
+
+                <RadioButton
+                    android:id="@+id/rb_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Leonard"
+                    android:textColor="@color/white"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/bt_valider"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Leonard"
-                android:textColor="@color/white"/>
-        </RadioGroup>
+                android:layout_gravity="center_horizontal|right"
+                android:layout_marginBottom="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_10"
+                android:layout_marginTop="@dimen/margin_10"
+                android:gravity="center"
+                android:text="Valider"
+                android:textColor="@drawable/blue_text_second_selected"/>
 
-        <Button
-            android:id="@+id/bt_valider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|right"
-            android:layout_marginBottom="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_10"
-            android:layout_marginTop="@dimen/margin_10"
-            android:gravity="center"
-            android:text="Valider"
-            android:textColor="@drawable/blue_text_second_selected"/>
+        </com.exempleux.composant.LinearLayoutApparitionAnimation>
 
-    </com.exempleux.composant.LinearLayoutApparitionAnimation>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_5"
+            android:background="@drawable/background_shadow_down_to_up"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/margin_5"
-        android:layout_below="@+id/ll_extension_title"
-        android:background="@drawable/background_shadow_down_to_up"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>

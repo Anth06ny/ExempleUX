@@ -12,7 +12,6 @@ import com.exempleux.R;
 import java.util.Arrays;
 import java.util.List;
 
-
 /**
  * Created by amonteiro on 05/11/2014.
  */
@@ -40,7 +39,7 @@ public class LinearLayoutApparitionAnimation extends LinearLayout {
 
     private void initAnimation(Context context) {
         slidDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
-        Animation slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up);
+        slideUp = AnimationUtils.loadAnimation(context, R.anim.slide_up);
         slideUp.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
