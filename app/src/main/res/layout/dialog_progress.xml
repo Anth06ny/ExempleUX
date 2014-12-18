@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_rounded_corners_dialog"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/margin_25">
+
+    <!--<com.imageframeanimation.FrameImageAnimator-->
+    <!--android:id="@+id/wd_iv"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="@dimen/wd_image_height"-->
+    <!--android:scaleType="fitCenter"-->
+    <!--android:src="@drawable/wait_frame1"/>-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_2"
+        android:layout_marginBottom="@dimen/margin_15"
+        android:layout_marginTop="@dimen/margin_15"
+        android:background="@color/vivid_blue"/>
+
+
+    <TextView
+        android:id="@+id/wd_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:minWidth="250dp"
+        android:padding="10dp"
+        android:text="Veuillez patientez..."
+        android:textColor="@color/vivid_blue"
+        android:textSize="@dimen/font_12"
+        android:textStyle="bold"/>
+
+</LinearLayout>

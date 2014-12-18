@@ -37,4 +37,5 @@
 
 
     <dimen name="menu_height">60dp</dimen>
+    <dimen name="switch_width">80dp</dimen>
 </resources>

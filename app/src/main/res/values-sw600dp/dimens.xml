@@ -35,6 +35,6 @@
     <dimen name="margin_80">160dp</dimen>
 
     <dimen name="standard_height">60dp</dimen>
-
+    <dimen name="switch_width">120dp</dimen>
 
 </resources>

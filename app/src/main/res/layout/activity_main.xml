@@ -121,16 +121,37 @@
             android:paddingTop="@dimen/margin_10"
             android:visibility="visible">
 
-            <Switch
-                android:id="@+id/sw_region"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_20"
                 android:layout_marginRight="@dimen/margin_10"
-                android:checked="false"
-                android:focusableInTouchMode="false"
-                android:text="Importantes"
-                android:textColor="@color/white"/>
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/standard_height"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:text="Importantes"
+                    android:textColor="@color/white"
+
+                    />
+
+                <com.gc.materialdesign.views.Switch
+                    android:id="@+id/sw_region"
+                    android:layout_width="@dimen/switch_width"
+                    android:layout_height="@dimen/standard_height"
+                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_10"
+                    android:background="@color/vivid_blue"
+                    android:checked="false"
+                    android:focusableInTouchMode="false"
+                    />
+
+            </LinearLayout>
+
 
             <RadioGroup
                 android:layout_width="fill_parent"
@@ -166,17 +187,22 @@
                     android:textColor="@color/white"/>
             </RadioGroup>
 
-            <Button
+            <TextView
                 android:id="@+id/bt_valider"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|right"
                 android:layout_marginBottom="@dimen/margin_10"
-                android:layout_marginRight="@dimen/margin_10"
+                android:layout_marginRight="@dimen/margin_20"
                 android:layout_marginTop="@dimen/margin_10"
                 android:gravity="center"
+                android:paddingBottom="@dimen/margin_10"
+                android:paddingLeft="@dimen/margin_10"
+                android:paddingRight="@dimen/margin_10"
+                android:paddingTop="@dimen/margin_10"
                 android:text="Valider"
-                android:textColor="@drawable/blue_text_second_selected"/>
+                android:textColor="@drawable/blue_text_second_selected"
+                android:textSize="@dimen/font_15"/>
 
         </com.exempleux.composant.LinearLayoutApparitionAnimation>
 

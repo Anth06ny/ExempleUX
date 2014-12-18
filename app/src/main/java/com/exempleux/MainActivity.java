@@ -1,19 +1,22 @@
 package com.exempleux;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.exempleux.adapter.EleveAdapter;
 import com.exempleux.bean.Eleve;
 import com.exempleux.composant.LinearLayoutApparitionAnimation;
+import com.exempleux.composant.MyWaintingDialog;
 
 import java.util.ArrayList;
 
@@ -24,16 +27,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private TextView tv_title, tv_resume;
     private ImageView iv_open;
     private LinearLayoutApparitionAnimation ll_extension;
-    private Switch sw_region;
+    private com.gc.materialdesign.views.Switch sw_region;
     private RadioButton rb_1;
     private RadioButton rb_2;
     private RadioButton rb_3;
-    private Button bt_valider;
+    private TextView bt_valider;
     private ListView lv;
+    private MyWaintingDialog progressDialog = null;
 
     //Autre
     private EleveAdapter eleveAdapter;
     private ArrayList<Eleve> eleveList;
+
+    /* ---------------------------------
+    // view
+    // -------------------------------- */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +53,11 @@ public class MainActivity extends Activity implements View.OnClickListener {
         tv_resume = (TextView) findViewById(R.id.tv_resume);
         iv_open = (ImageView) findViewById(R.id.iv_open);
         ll_extension = (LinearLayoutApparitionAnimation) findViewById(R.id.ll_extension);
-        sw_region = (Switch) findViewById(R.id.sw_region);
+        sw_region = (com.gc.materialdesign.views.Switch) findViewById(R.id.sw_region);
         rb_1 = (RadioButton) findViewById(R.id.rb_0);
         rb_2 = (RadioButton) findViewById(R.id.rb_2);
         rb_3 = (RadioButton) findViewById(R.id.rb_3);
-        bt_valider = (Button) findViewById(R.id.bt_valider);
+        bt_valider = (TextView) findViewById(R.id.bt_valider);
         lv = (ListView) findViewById(R.id.lv);
 
         rb_1.setOnClickListener(this);
@@ -63,7 +71,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         lv = (ListView) findViewById(R.id.lv);
         lv.setAdapter(eleveAdapter);
 
-        bt_valider.performClick();
+        fillList(rb_1.getId());
+        tv_resume.setText(rb_1.getText());
 
     }
 
@@ -71,6 +80,10 @@ public class MainActivity extends Activity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
     }
+
+    /* ---------------------------------
+    // evenement
+    // -------------------------------- */
 
     @Override
     public void onClick(View v) {
@@ -84,18 +97,43 @@ public class MainActivity extends Activity implements View.OnClickListener {
         }
         else if (v == bt_valider) {
 
-            if (rb_1.isChecked()) {
-                fillList(rb_1.getId());
-                tv_resume.setText(rb_1.getText());
-            }
-            else if (rb_2.isChecked()) {
-                fillList(rb_2.getId());
-                tv_resume.setText(rb_2.getText());
-            }
-            else if (rb_3.isChecked()) {
-                fillList(rb_3.getId());
-                tv_resume.setText(rb_3.getText());
-            }
+            iv_open.performClick();
+
+            new AsyncTask() {
+
+                @Override
+                protected void onPreExecute() {
+                    super.onPreExecute();
+                    handler.sendEmptyMessage(MSG_START_PROGRESS_BLOCANT);
+
+                }
+
+                @Override
+                protected Object doInBackground(Object[] params) {
+                    SystemClock.sleep(3000);
+                    return null;
+                }
+
+                @Override
+                protected void onPostExecute(Object o) {
+                    super.onPostExecute(o);
+                    if (rb_1.isChecked()) {
+                        fillList(rb_1.getId());
+                        tv_resume.setText(rb_1.getText());
+                    }
+                    else if (rb_2.isChecked()) {
+                        fillList(rb_2.getId());
+                        tv_resume.setText(rb_2.getText());
+                    }
+                    else if (rb_3.isChecked()) {
+                        fillList(rb_3.getId());
+                        tv_resume.setText(rb_3.getText());
+                    }
+
+                    handler.sendEmptyMessage(MSG_STOP_PROGRESS);
+                }
+            }.execute();
+
         }
         else if (v == iv_open) {
             if (ll_extension.getVisibility() != View.VISIBLE) {
@@ -108,6 +146,47 @@ public class MainActivity extends Activity implements View.OnClickListener {
             }
         }
     }
+
+    /* ---------------------------------
+    // handler
+    // -------------------------------- */
+    private static final int MSG_STOP_PROGRESS = 1;
+    private static final int MSG_START_PROGRESS_BLOCANT = 2;
+
+    /** Handler pemettant de gerer certains evenements. */
+    private final Handler handler = new Handler() {
+
+        @Override
+        public void handleMessage(final Message msg) {
+
+            switch (msg.what) {
+                case MSG_START_PROGRESS_BLOCANT:
+                    if (progressDialog == null) {
+                        progressDialog = new MyWaintingDialog();
+                    }
+
+                    if (!progressDialog.isVisible()) {
+                        progressDialog.show(getFragmentManager(), "MyWaintingDialog");
+                    }
+
+                    break;
+                case MSG_STOP_PROGRESS:
+
+                    if (progressDialog != null && progressDialog.isVisible()) {
+                        progressDialog.dismiss();
+                        progressDialog = null;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+    };
+
+    /* ---------------------------------
+    // private
+    // -------------------------------- */
 
     private void fillList(int id) {
         eleveList.clear();
